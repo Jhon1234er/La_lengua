@@ -1,0 +1,162 @@
+/* Home Container */
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px; /* Espacio para el header fijo */
+  width: 100%;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 3rem;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  width: 100%;
+  max-width: none;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.hero-title {
+  margin-bottom: 2rem;
+}
+
+.title-3d {
+  display: block;
+  font-size: 6rem;
+  font-weight: bold;
+  color: #4A90E2;
+  line-height: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.title-trend {
+  display: block;
+  font-size: 6rem;
+  font-weight: bold;
+  color: #333;
+  line-height: 0.9;
+}
+
+.workshop-info {
+  margin-bottom: 1.5rem;
+}
+
+.workshop-info h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0.2rem 0;
+}
+
+.free-text {
+  color: #4A90E2;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0 0;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: #666;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: #4A90E2;
+  transform: translateY(-2px);
+}
+
+.website {
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Hero Image */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.character-img {
+  max-width: 120%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .title-3d,
+  .title-trend {
+    font-size: 4rem;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .character-img {
+    max-height: 60vh;
+    transform: scale(1.1);
+  }
+  
+  .workshop-info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 0.5rem;
+  }
+}
