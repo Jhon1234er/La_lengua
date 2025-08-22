@@ -1,0 +1,40 @@
+/* Header */
+.header {
+  background: #2563eb;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.nav-links li:hover {
+  opacity: 0.8;
+}
+
+.points {
+  font-weight: bold;
+}
+footer {
+  text-align: center;
+  background: #2563eb;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
