@@ -1,26 +1,45 @@
-export default function Header() {
+import './Header.css';
+import { Link, useLocation } from 'react-router-dom';
+
+interface HeaderProps {
+  onLoginClick: () => void;
+}
+
+export default function Header({ onLoginClick }: HeaderProps) {
+  const location = useLocation();
+  
   return (
-    <header className="header">
+    <header className="header-home">
       {/* Logo */}
       <div className="logo">
-        La Lengua 😜    
-    </div>
+        The Tongue 😜    
+      </div>
 
       {/* Navegación */}
       <nav className="nav">
-        <a href="#" className="active">Inicio</a>
-        <a href="#">Misiones</a>
-        <a href="#">Progreso</a>
-        <a href="#">Programar Clases</a>
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+        <a href="/#info" onClick={(e) => {
+          e.preventDefault();
+          window.location.href = '/#info';
+          setTimeout(() => {
+            const element = document.getElementById('info');
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}>Info</a>
+        <a href="/#contact" onClick={(e) => {
+          e.preventDefault();
+          window.location.href = '/#contact';
+          setTimeout(() => {
+            const element = document.getElementById('contact');
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}>Contact</a>
+        <Link to="/blog" className={location.pathname === '/blog' ? 'active blog-link' : 'blog-link'}>Blog</Link>
+        <button onClick={onLoginClick} className="login-btn">
+          <span className="btn-text">The Language</span>
+          <span className="btn-hover">Login</span>
+        </button>
       </nav>
-
-      {/* User Stats */}
-      <div className="user-stats">
-        <div className="points">
-          <span>🍬</span>
-          <span>250</span>
-        </div>
-      </div>
     </header>
   );
 }
