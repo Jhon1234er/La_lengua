@@ -49,7 +49,7 @@ function gallery_map_media_item($row) {
         $baseUrl = $scheme . '://' . $host;
         $filePath = $row['file'];
         if ($filePath[0] !== '/') {
-            $filePath = '/api/' . ltrim($filePath, '/');
+            $filePath = '/' . ltrim($filePath, '/');
         }
         $url = $baseUrl . $filePath;
     }
@@ -165,18 +165,15 @@ try {
             $ext = pathinfo($origName, PATHINFO_EXTENSION);
             $safeName = uniqid('media_', true) . ($ext ? ('.' . $ext) : '');
 
-            $uploadDir = __DIR__ . '/uploads/gallery/';
-            if (!is_dir($uploadDir)) {
-                @mkdir($uploadDir, 0775, true);
-            }
+            $uploadDir = dirname(__DIR__) . '/uploads/gallery/';
             $destPath = $uploadDir . $safeName;
             if (move_uploaded_file($tmpName, $destPath)) {
-                $uploadedPath = 'uploads/gallery/' . $safeName;
+                $uploadedPath = '/uploads/gallery/' . $safeName;
 
                 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
                 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
                 $baseUrl = $scheme . '://' . $host;
-                $publicUrl = $baseUrl . '/api/' . $uploadedPath;
+                $publicUrl = $baseUrl . $uploadedPath;
 
                 if ($url === '') {
                     $url = $publicUrl;
@@ -318,7 +315,7 @@ try {
         // Intentar borrar el archivo físico si existe
         if (!empty($row['file'])) {
             $filePath = $row['file'];
-            $absolutePath = __DIR__ . '/' . ltrim($filePath, '/');
+            $absolutePath = dirname(__DIR__) . ltrim($filePath, '/');
             if (file_exists($absolutePath) && is_file($absolutePath)) {
                 @unlink($absolutePath);
             }
